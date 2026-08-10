@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Moto klub Čarapani - Kruševac. Moto ture, druženja, skupovi i avanture.">
+  <title>Moto klub Čarapani | Kruševac</title>
+  <style>
+    :root{
+      --bg:#0b0b0d; --card:#151519; --text:#f5f5f5; --muted:#b8b8bd;
+      --accent:#e11d2e; --accent2:#ff3948; --line:#29292f;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px,92%);margin:auto}
+    header{
+      position:fixed;top:0;left:0;width:100%;z-index:20;
+      background:rgba(8,8,10,.9);backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line)
+    }
+    nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{font-weight:900;letter-spacing:1px;font-size:19px}
+    .logo span{color:var(--accent)}
+    .nav-links{display:flex;gap:22px;list-style:none;font-size:14px;font-weight:700}
+    .nav-links a:hover{color:var(--accent2)}
+    .hero{
+      min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;
+      background:
+        radial-gradient(circle at 80% 20%,rgba(225,29,46,.25),transparent 30%),
+        linear-gradient(135deg,#09090b 0%,#17171c 55%,#09090b 100%);
+    }
+    .hero:after{
+      content:"🏍️";position:absolute;right:5%;bottom:4%;font-size:clamp(120px,22vw,300px);
+      opacity:.07;transform:rotate(-8deg)
+    }
+    .hero-content{padding-top:90px;position:relative;z-index:2;max-width:760px}
+    .eyebrow{display:inline-block;color:#fff;background:var(--accent);padding:7px 12px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:1px;margin-bottom:18px}
+    h1{font-size:clamp(48px,9vw,92px);line-height:.95;margin-bottom:22px;text-transform:uppercase}
+    h1 span{color:var(--accent)}
+    .hero p{font-size:clamp(18px,3vw,24px);color:var(--muted);max-width:650px;margin-bottom:30px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:13px 20px;border-radius:8px;font-weight:800;border:1px solid var(--line);transition:.2s}
+    .btn-primary{background:var(--accent);border-color:var(--accent)}
+    .btn-primary:hover{background:var(--accent2);transform:translateY(-2px)}
+    .btn-secondary:hover{border-color:var(--accent);transform:translateY(-2px)}
+    section{padding:85px 0}
+    .section-title{font-size:38px;margin-bottom:12px;text-transform:uppercase}
+    .section-title span{color:var(--accent)}
+    .section-intro{color:var(--muted);max-width:700px;margin-bottom:35px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:25px}
+    .icon{font-size:34px;margin-bottom:12px}
+    .card h3{margin-bottom:8px;font-size:21px}
+    .card p{color:var(--muted)}
+    .event{
+      display:grid;grid-template-columns:110px 1fr auto;gap:20px;align-items:center;
+      background:var(--card);border:1px solid var(--line);padding:20px;border-radius:14px;margin-bottom:14px
+    }
+    .date{background:var(--accent);border-radius:10px;text-align:center;padding:10px;font-weight:900}
+    .date strong{display:block;font-size:30px;line-height:1}
+    .event p{color:var(--muted)}
+    .tag{font-size:12px;font-weight:900;color:#fff;background:#25252b;border-radius:999px;padding:7px 10px;white-space:nowrap}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .photo{
+      min-height:220px;border-radius:14px;border:1px solid var(--line);
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,#202026,#0e0e11);
+      color:#777;font-size:18px;font-weight:800;text-align:center;padding:20px
+    }
+    .photo small{display:block;font-weight:400;margin-top:8px;color:#555}
+    .contact-box{background:linear-gradient(135deg,#17171c,#101014);border:1px solid var(--line);border-radius:16px;padding:35px}
+    .contact-list{display:grid;gap:12px;margin-top:20px;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:25px 0;color:#888;text-align:center}
+    .mobile-menu{display:none}
+    @media(max-width:800px){
+      .nav-links{display:none}
+      .mobile-menu{display:block;font-size:25px}
+      .cards,.gallery{grid-template-columns:1fr}
+      .event{grid-template-columns:80px 1fr}
+      .event .tag{grid-column:2;justify-self:start}
+      section{padding:65px 0}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a href="#pocetna" class="logo">MOTO KLUB <span>ČARAPANI</span></a>
+      <ul class="nav-links">
+        <li><a href="#o-nama">O nama</a></li>
+        <li><a href="#ture">Ture</a></li>
+        <li><a href="#dogadjaji">Događaji</a></li>
+        <li><a href="#galerija">Galerija</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="mobile-menu">🏍️</div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="pocetna">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow">KRUŠEVAC • SRBIJA</div>
+        <h1>Moto klub <span>Čarapani</span></h1>
+        <p>Vožnja. Druženje. Avantura. Okupljamo ljubitelje motora i zajedno pravimo kilometre koji se pamte.</p>
+        <div class="buttons">
+          <a class="btn btn-primary" href="#ture">POGLEDAJ TURE</a>
+          <a class="btn btn-secondary" href="#kontakt">KONTAKT</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="o-nama">
+    <div class="container">
+      <h2 class="section-title">O <span>nama</span></h2>
+      <p class="section-intro">
+        Moto klub Čarapani je mesto za sve koji vole motocikle, putovanja, dobru ekipu i bezbednu vožnju.
+        Od kratkih vožnji do višednevnih avantura — cilj je da svaki kilometar bude dobar razlog za novo druženje.
+      </p>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🏍️</div>
+          <h3>Zajednička vožnja</h3>
+          <p>Organizujemo grupne vožnje i moto ture iz Kruševca i okoline.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🤝</div>
+          <h3>Druženje</h3>
+          <p>Okupljanja, moto skupovi i prijateljstva koja nastaju na dva točka.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🗺️</div>
+          <h3>Avantura</h3>
+          <p>Planine, reke, jezera, gradovi i novi putevi — uvek postoji sledeća destinacija.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ture">
+    <div class="container">
+      <h2 class="section-title">Moto <span>ture</span></h2>
+      <p class="section-intro">Ovde možeš dodavati buduće ture, rute, vreme polaska i informacije za učesnike.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🛣️</div>
+          <h3>Kruševac → Svilajnac → Paraćin</h3>
+          <p>Grupna vožnja, druženje u Svilajncu, zatim odlazak na moto skup u Paraćinu.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🏔️</div>
+          <h3>Višednevne avanture</h3>
+          <p>Planiranje dužih ruta kroz Srbiju i region, uz pauze i bezbednu grupnu vožnju.</p>
+        </div>
+        <div class="card">
+          <div class="icon">📍</div>
+          <h3>Sledeća destinacija</h3>
+          <p>Ovde ubaci sledeću turu čim je dogovorite.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dogadjaji">
+    <div class="container">
+      <h2 class="section-title">Predstojeći <span>događaji</span></h2>
+      <p class="section-intro">Primer rasporeda — kasnije samo promeniš datum, mesto i opis.</p>
+
+      <div class="event">
+        <div class="date"><strong>14</strong>AVG</div>
+        <div>
+          <h3>Moto tura</h3>
+          <p>Kruševac → Svilajnac → Paraćin</p>
+        </div>
+        <div class="tag">GRUPNA VOŽNJA</div>
+      </div>
+
+      <div class="event">
+        <div class="date"><strong>XX</strong>SEP</div>
+        <div>
+          <h3>Moto skup</h3>
+          <p>Detalji događaja uskoro.</p>
+        </div>
+        <div class="tag">NAJAVA</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galerija">
+    <div class="container">
+      <h2 class="section-title">Moto <span>galerija</span></h2>
+      <p class="section-intro">Za sada su ovo mesta za fotografije. Kada budeš imao slike, mogu se ubaciti direktno u sajt.</p>
+      <div class="gallery">
+        <div class="photo">📷<div><br>Fotografija 1<small>Dodaj svoju sliku</small></div></div>
+        <div class="photo">📷<div><br>Fotografija 2<small>Dodaj svoju sliku</small></div></div>
+        <div class="photo">📷<div><br>Fotografija 3<small>Dodaj svoju sliku</small></div></div>
+        <div class="photo">📷<div><br>Fotografija 4<small>Dodaj svoju sliku</small></div></div>
+        <div class="photo">📷<div><br>Fotografija 5<small>Dodaj svoju sliku</small></div></div>
+        <div class="photo">📷<div><br>Fotografija 6<small>Dodaj svoju sliku</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="contact-box">
+        <h2 class="section-title">Pridruži se <span>ekipi</span></h2>
+        <p class="section-intro">Za vožnje, druženje i informacije o događajima — kontaktiraj Moto klub Čarapani.</p>
+        <div class="buttons">
+          <!-- ZAMENI LINKOVE SVOJIM STVARNIM LINKOVIMA -->
+          <a class="btn btn-primary" href="https://www.facebook.com/" target="_blank">FACEBOOK</a>
+          <a class="btn btn-secondary" href="https://www.instagram.com/" target="_blank">INSTAGRAM</a>
+        </div>
+        <div class="contact-list">
+          <div>📍 Kruševac, Srbija</div>
+          <div>📞 Telefon: DODAJ BROJ</div>
+          <div>✉️ Email: DODAJ EMAIL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 Moto klub Čarapani • Kruševac
+  </div>
+</footer>
+
+</body>
+</html>
